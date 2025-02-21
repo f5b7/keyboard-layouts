@@ -1,0 +1,106 @@
+# https://caksoylar.github.io/keymap-drawer?keymap_yaml=H4sIAAAAAAAC_82UW1PTQBiG753hPyxLBS2NkLacMurYclSrYFsEBKxJurSZpknMbmUYxCt_g1f-EW_1j7lvetpNw4yXMsPTfb999_R9m7V9z-aMW3MPCDkHCFnkEcnl-m3P6rEbJ7TjtsEj22W5XGFkiMXIYMdxeG347EoYTihE2Jc_fntqFE56JmE7024uMrqNmH1hMVeWc_jI5thuL9mKEQ6E7wWKp-3PeEbzzHoZ17Yvwmh4BNH13N7U5o5dUeQzY7JFNwxEHPrKKbJ9vOtdianLznaFkfDCQJmsqO1tECUZnT2D3dF8sdfpinusY2ffc-OQh5NNXc498O0baU-K_7nfa413ZZEeY44Xrnixx1suW5GpNGEa-luB3WcWqVXODo-bySQyz8kk1Upj1xoua4yvE_7yjBem6pZwi9BlQn7_ogUiZNskZJ6SuxlPAzmUHpTHIr5I3MUCSY4r-2N0di1yIA-uDS8p7bLSXlPa60p7Q2lvKu0tpb2qtOkSnajLyYHzwikQ-k7uiZ4Au0AdaAIfgGPgJXAIHAF_flJlEldGKgg3gB1gD9gHDoBXwGuglgz_kfC7MomS-tnMPyfk6zDxS08JuVhKUki3K0cNcnJY39ELQc-oqk41ta2p95qqauooFg1Xi7zV1BtNFTT1RFOGqvIOz6pDp0DytvznkUQsUIpTlCBvdxKXVFnXlO6ZRW2tPVOXqd6SLsu6XNPlui43dLmpy63UNlZT2sy6frRpO7gJJlAESkAZWAPWgQ1gE9gCVoFq8mJm3h9abZLtWl0vbZOY6UAxHSilA-V0QE9QjeFTVwI74XWgBY4jTdbxCKiRYOD798nsT6P4j6P_VzkuXNZlqO0PPNS24uORTD4FuhsIFkt1S8RNJJ_wLkveTZlLuOTgheHoeQx8ASwAOeAh8BFYBPLAI-Axlh8NpM8QOQcugYsL8JMyNW0hsgzcAncAniP6Da6_5oxn-JAIAAA%3D
+
+aliases:
+  [
+    &sp $$mdi:keyboard-space$$,
+    &rt $$mdi:arrow-left-bottom-bold$$,
+    &tb $$mdi:keyboard-tab$$,
+    &st $$mdi:keyboard-tab-reverse$$,
+    &bs $$mdi:backspace-outline$$,
+    &dl $$mdi:backspace-reverse-outline$$,
+    &es $$mdi:arrow-top-left-thick$$,
+    &c $$mdi:apple-keyboard-control$$,
+    &s $$mdi:apple-keyboard-shift$$,
+    &a $$mdi:apple-keyboard-option$$,
+    &s2 $$mdi:arrow-up-bold-outline$$,
+    &ag $$mdi:arrow-right-bold-outline$$,
+    &g $$mdi:microsoft$$,
+  ]
+layout:
+  qmk_keyboard: keebio/iris_ce/rev1
+  layout_name: LAYOUT
+layers:
+  BASE:
+    - [
+        *es,
+        { s: "+  ¹", t: "1  !" },
+        { s: "Shift", left: lt, t: 2, right: "rt", h: Hold },
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        0,
+        "'",
+      ]
+    - [*tb, "Q", "W", "E", "R", "T", "Z", "U", "I", "O", "P", "Ü"]
+    - [*c, "A", "S", "D", "F", "G", "H", "J", "K", "L", "Ö", "Ä"]
+    - [
+        *s,
+        { s: ">  |", t: '<  \', h: "CAPS WORD" },
+        "Y",
+        "X",
+        "C",
+        "V",
+        "B",
+        "PrtSc",
+        "N",
+        "M",
+        ",",
+        ".",
+        "-",
+        *bs,
+      ]
+    - [*g, *a, *sp, *rt, "EXT", *ag]
+  EXT:
+    - [
+        "F12",
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8",
+        "F9",
+        "F10",
+        "F11",
+      ]
+    - ["Tab", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "Bspace"]
+    - [
+        "BT CLR",
+        "BT 1",
+        "BT 2",
+        "BT 3",
+        "BT 4",
+        "BT 5",
+        "Left",
+        "Down",
+        "Up",
+        "Right",
+        null,
+        null,
+      ]
+    - [
+        *s2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "Bspace",
+      ]
+    - ["LGui", "Alt", *sp, "Enter", { type: held }, "RAlt"]
+#    - !", "@", "#", "$", "%", "^", "&", "*", "(", ")",
+#    - "=", "[", "]", "\\", "`"]
+#    - "_", "+", "{", "}", "|", "~"]
