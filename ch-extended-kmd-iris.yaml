@@ -1,20 +1,21 @@
-# https://caksoylar.github.io/keymap-drawer?keymap_yaml=H4sIAAAAAAAC_82UW1PTQBiG753hPyxLBS2NkLacMurYclSrYFsEBKxJurSZpknMbmUYxCt_g1f-EW_1j7lvetpNw4yXMsPTfb999_R9m7V9z-aMW3MPCDkHCFnkEcnl-m3P6rEbJ7TjtsEj22W5XGFkiMXIYMdxeG347EoYTihE2Jc_fntqFE56JmE7024uMrqNmH1hMVeWc_jI5thuL9mKEQ6E7wWKp-3PeEbzzHoZ17Yvwmh4BNH13N7U5o5dUeQzY7JFNwxEHPrKKbJ9vOtdianLznaFkfDCQJmsqO1tECUZnT2D3dF8sdfpinusY2ffc-OQh5NNXc498O0baU-K_7nfa413ZZEeY44Xrnixx1suW5GpNGEa-luB3WcWqVXODo-bySQyz8kk1Upj1xoua4yvE_7yjBem6pZwi9BlQn7_ogUiZNskZJ6SuxlPAzmUHpTHIr5I3MUCSY4r-2N0di1yIA-uDS8p7bLSXlPa60p7Q2lvKu0tpb2qtOkSnajLyYHzwikQ-k7uiZ4Au0AdaAIfgGPgJXAIHAF_flJlEldGKgg3gB1gD9gHDoBXwGuglgz_kfC7MomS-tnMPyfk6zDxS08JuVhKUki3K0cNcnJY39ELQc-oqk41ta2p95qqauooFg1Xi7zV1BtNFTT1RFOGqvIOz6pDp0DytvznkUQsUIpTlCBvdxKXVFnXlO6ZRW2tPVOXqd6SLsu6XNPlui43dLmpy63UNlZT2sy6frRpO7gJJlAESkAZWAPWgQ1gE9gCVoFq8mJm3h9abZLtWl0vbZOY6UAxHSilA-V0QE9QjeFTVwI74XWgBY4jTdbxCKiRYOD798nsT6P4j6P_VzkuXNZlqO0PPNS24uORTD4FuhsIFkt1S8RNJJ_wLkveTZlLuOTgheHoeQx8ASwAOeAh8BFYBPLAI-Axlh8NpM8QOQcugYsL8JMyNW0hsgzcAncAniP6Da6_5oxn-JAIAAA%3D
+# ch-extended-kmd-iris.yaml
+
+# https://caksoylar.github.io/keymap-drawer?keymap_yaml=H4sIAAAAAAAC_82Vy3LTMBSG932KgxsaCHFbJ-ktwy3pjUugJUlpC4Xg2GrjiWK7skLJlDLcZmDBGjbsWHQPK7Z0ywzvwJOg4ySynJhhS2byt9_RryP7HEmZBKulk2ecuDax9XbH1h3mBNM9s0MnTOqYAQmKEwAPxRdgKvBNi0Aq1bGdYpv0mp7JbD0MplLZvoUR3mXuwGMy5h3plOxzvelx7nXEH2pLLzebo8lESA4HyeM6I08JC6Ilm6bVVp9Msu51OXXcyGkTSvi4bZBwzE4Cy_RJ7F245_ffh7ccqy2dB11nYOs4FvMCb5_LMYszOszh-5To8mUsz-XMo9JpUp5s9HzueK7qO2Cxx2LOQYuHxR17iaDl7POYuesnOB9NULMnItjtw067MVy7CG1Cmo43g_uiYZEZUSxDePruhmt2SBEqpd2NrTpmEHXEDOVSbbUYrq8P9g5-Mv2CZmVAk_9dAvjxXZIBcE6LbOlogrB9lZQDuJ5OypYRtm-S8gCTWpLt7FT4vkgsAKQSfedRfr76_emDDM2JmaeJ5qnQ_Fo1zwM8TvTOAOztSVoAeJ5ouwBwLGFRnMZE10WAEwlLoqOJrivh471RH28W4EWi91rofal60wBPpPfRsMMZcSyzoN0DEN499xDg1ztNBLZRVlGqKHWUByhbKDfD9O_FFKQNlE2Us89alBlPj4iVcKCGsoKyhrKOcgPlFsptlEqY4GOob6M00c4Ij0P0sscQFEG7GlYeeBHSl0VL0lloiehyabMG2xvVFQ1OlPLsqrXaUWFZhfsqlFXYZLxmqYG7KtxRIavCtAoN0BXMyMtsvDfibspCRtwZQvsWyPRvaWzODjYlE94oOEXw-LnV1oycuvaaEaP4WD5GhRjNxWg-RgsxWozRUnz12Tga4xtSq5tN3AMGSg4lj1JAmUOZR1lAWURZQplFKYclStg5WrkOy5VqrKt1MEY4N8L5ES6McKwiFfHDovKKd-SqvOWrVMU7Xwm4XUqT6d_H4O9z_y8atme84ZX1roP9K1GuRRtdW3U5YSJwDLzni1-qFqG2OM2iemjsT_8D1L4WJgQJAAA%3D
 
 aliases:
   [
-    &sp $$mdi:keyboard-space$$,
-    &rt $$mdi:arrow-left-bottom-bold$$,
-    &tb $$mdi:keyboard-tab$$,
-    &st $$mdi:keyboard-tab-reverse$$,
-    &bs $$mdi:backspace-outline$$,
-    &dl $$mdi:backspace-reverse-outline$$,
-    &es $$mdi:arrow-top-left-thick$$,
-    &c $$mdi:apple-keyboard-control$$,
-    &s $$mdi:apple-keyboard-shift$$,
-    &a $$mdi:apple-keyboard-option$$,
-    &s2 $$mdi:arrow-up-bold-outline$$,
-    &ag $$mdi:arrow-right-bold-outline$$,
-    &g $$mdi:microsoft$$,
+    &space $$mdi:keyboard-space$$,
+    &return $$mdi:arrow-left-bottom-bold$$,
+    &tab $$mdi:keyboard-tab$$,
+    &stab $$mdi:keyboard-tab-reverse$$,
+    &backspace $$mdi:backspace-outline$$,
+    &delete $$mdi:backspace-reverse-outline$$,
+    &escape $$mdi:arrow-top-left-thick$$,
+    &gui $$mdi:microsoft$$,
+    &ctrl $$mdi:apple-keyboard-control$$,
+    &alt $$mdi:apple-keyboard-option$$,
+    &altgr $$mdi:arrow-right-bold-outline$$,
+    &shift $$mdi:arrow-up-bold-outline$$,
   ]
 layout:
   qmk_keyboard: keebio/iris_ce/rev1
@@ -22,23 +23,45 @@ layout:
 layers:
   BASE:
     - [
-        *es,
-        { s: "+  ¹", t: "1  !" },
-        { s: "Shift", left: lt, t: 2, right: "rt", h: Hold },
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        0,
-        "'",
+        *escape,
+        "
+        +  ¹
+        1  !",
+        '
+        "  ²
+        2  @',
+        "
+        *  ³
+        3  #",
+        "
+        ç  £
+        4  $",
+        "
+        %    ́◌
+        5  §",
+        "
+        &    ̂◌
+        6  ^",
+        "
+        /  \\
+        7  |",
+        "
+        (  {
+        8  [",
+        "
+        )  }
+        9  ]",
+        "
+        =    ̃◌
+        0  ~",
+        "
+        ?    ̀◌
+        '  `",
       ]
-    - [*tb, "Q", "W", "E", "R", "T", "Z", "U", "I", "O", "P", "Ü"]
-    - [*c, "A", "S", "D", "F", "G", "H", "J", "K", "L", "Ö", "Ä"]
+    - [*tab, "Q  ◌\nq  χ", "W", "E", "R", "T", "Z", "U", "I    ̈◌", "O", "P", "Ü"]
+    - [*ctrl, "A", "S", "D", "F", "G", "H", "J", "K", "L", "Ö", "Ä"]
     - [
-        *s,
+        *shift,
         { s: ">  |", t: '<  \', h: "CAPS WORD" },
         "Y",
         "X",
@@ -50,10 +73,10 @@ layers:
         "M",
         ",",
         ".",
-        "-",
-        *bs,
+        "_ -",
+        *backspace,
       ]
-    - [*g, *a, *sp, *rt, "EXT", *ag]
+    - [*gui, *alt, *space, *return, "EXT", *altgr]
   EXT:
     - [
         "F12",
@@ -85,7 +108,7 @@ layers:
         null,
       ]
     - [
-        *s2,
+        *shift,
         null,
         null,
         null,
@@ -100,7 +123,5 @@ layers:
         null,
         "Bspace",
       ]
-    - ["LGui", "Alt", *sp, "Enter", { type: held }, "RAlt"]
-#    - !", "@", "#", "$", "%", "^", "&", "*", "(", ")",
-#    - "=", "[", "]", "\\", "`"]
-#    - "_", "+", "{", "}", "|", "~"]
+    - ["LGui", "Alt", *space, "Enter", { type: held }, "RAlt"]
+    
