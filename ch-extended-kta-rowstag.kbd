@@ -1,9 +1,34 @@
 #|
-  This config changes Caps Lock to act as Caps Lock on quick tap, but if held, it will act as Left Ctrl.
-  It also changes the f key to act as f on quick tap, but change to the NAV layer on hold.
+  Tap / Hold:
+  * Caps Lock / Left Ctrl
+  * f / NAV layer
+  * ä / Right Ctrl
+  
+  Combos (Chords):
+  * jk → Return
+  * ,. → Backspace
+  * .- → Delete
 |#
 
-(defcfg)
+(defcfg
+  movemouse-inherit-accel-state yes
+  movemouse-smooth-diagonals yes
+)
+
+(defvar
+  tap-timeout 200
+  hold-timeout 150
+  ma-interval 50
+  ma-accel-time 3000
+  ma-min 1
+  ma-max 200
+  tt $tap-timeout
+  ht $hold-timeout
+  mi $ma-interval
+  ma $ma-accel-time
+  mn $ma-min
+  mx $ma-max
+)
 
 (defsrc
   grv    1    2    3    4    5             6    7    8    9    0      -    ;; CH ' = Key Code 219 = Minus = -
@@ -16,20 +41,41 @@
 (deflayer BASE
   _      _    _    _    _    _             _    _    _    _    _      _
   _      _    _    _    _    _             _    _    _    _    _      _
-  @clC   _    _    _    @fNV _             _    _    _    _    _      _
-  _      _    _    _    _    _    _        _    _    _    _    _      _
+  @clC   _    _    _    @fNV _             _   @jCH @kCH  _    _     @äRC
+  _      _    _    _    _    _    _        _    _   @,CH @.CH @-CH    _
          _      _       _
 )
 
 (deflayer NAV
-  lrld   _    _    _    _    _             _    _    _    _    _      _
-  _      _    _    _    _    _             _   home  ▲   end  pgup    _
-  _      _    _    _    _    _             _   left  ▼   rght pgdn    _
-  _      _    _    _    _    _    _        _    _    _    _    _      _
+  f12    f1   f2   f3   f4   f5            f6   f7   f8   f9  f10    f11
+  lrld   _   @mau  _    _    _            esc  home  ▲   end  pgup   del
+  _     @mal @mad @mar  _    _            ret  left  ▼   rght pgdn    _
+  _     menu  _    _    _    _   prnt     ins  mlft mmid mrgt bspc    _
          _      _       _
 )
 
 (defalias
-  clC (tap-hold 200 150 caps lctl)
-  fNV (tap-hold 200 150 f (layer-toggle NAV))
+  clC (tap-hold $tt $ht caps lctl)
+  fNV (tap-hold $tt $ht f (layer-toggle NAV))
+  äRC (tap-hold $tt $ht ' rctl)
+  mau (movemouse-accel-up $mi $ma $mn $mx)
+  mad (movemouse-accel-down $mi $ma $mn $mx)
+  mal (movemouse-accel-left $mi $ma $mn $mx)
+  mar (movemouse-accel-right $mi $ma $mn $mx)
+  jCH (chord c1 j)
+  kCH (chord c1 k)
+  ,CH (chord c1 ,)
+  .CH (chord c1 .)
+  -CH (chord c1 -)
+)
+
+(defchords c1 75
+  (j  ) j
+  (  k) k
+  (j k) ret
+  (,  ) ,
+  (.  ) .
+  (, .) bspc
+  (  -) /    ;; CH - = Key Code 189 = Slash = /
+  (. -) del
 )
