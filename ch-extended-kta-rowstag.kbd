@@ -1,0 +1,35 @@
+#|
+  This config changes Caps Lock to act as Caps Lock on quick tap, but if held, it will act as Left Ctrl.
+  It also changes the f key to act as f on quick tap, but change to the NAV layer on hold.
+|#
+
+(defcfg)
+
+(defsrc
+  grv    1    2    3    4    5             6    7    8    9    0      -    ;; CH ' = Key Code 219 = Minus = -
+  tab    q    w    e    r    t             y    u    i    o    p      [    ;; CH ü = Key Code 186 = BracketLeft = [
+  caps   a    s    d    f    g             h    j    k    l    ;      '    ;; CH ä = Key Code 220 = Quote = '
+  lsft   <    z    x    c    v    b        n    m    ,    .    /      rsft ;; CH - = Key Code 189 = Slash = /
+         lmet   lalt    Space
+)
+
+(deflayer BASE
+  _      _    _    _    _    _             _    _    _    _    _      _
+  _      _    _    _    _    _             _    _    _    _    _      _
+  @clC   _    _    _    @fNV _             _    _    _    _    _      _
+  _      _    _    _    _    _    _        _    _    _    _    _      _
+         _      _       _
+)
+
+(deflayer NAV
+  lrld   _    _    _    _    _             _    _    _    _    _      _
+  _      _    _    _    _    _             _   home  ▲   end  pgup    _
+  _      _    _    _    _    _             _   left  ▼   rght pgdn    _
+  _      _    _    _    _    _    _        _    _    _    _    _      _
+         _      _       _
+)
+
+(defalias
+  clC (tap-hold 200 150 caps lctl)
+  fNV (tap-hold 200 150 f (layer-toggle NAV))
+)
