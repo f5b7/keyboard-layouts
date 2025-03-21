@@ -1,9 +1,15 @@
 #|
+  One-shot
+  * Left Shift
+
   Tap / Hold:
-  * Caps Lock / Left Ctrl
-  * f / NAV layer
+  * Caps Word / Right Ctrl
   * ä / Right Ctrl
-  
+  * f / NAV layer
+  * j / NAV layer
+  * Space / SYM-1 layer
+  * On SYM-1 layer: b / SYM-2 layer
+
   Combos (Chords):
   * jk → Return
   * ,. → Backspace
@@ -13,17 +19,20 @@
 (defcfg
   movemouse-inherit-accel-state yes
   movemouse-smooth-diagonals yes
+  ;; override-release-on-activation yes
 )
 
 (defvar
   tap-timeout 200
   hold-timeout 150
+  hold-timeout-long 250
   ma-interval 50
-  ma-accel-time 3000
+  ma-accel-time 2000
   ma-min 1
-  ma-max 200
+  ma-max 100
   tt $tap-timeout
   ht $hold-timeout
+  htl $hold-timeout-long
   mi $ma-interval
   ma $ma-accel-time
   mn $ma-min
@@ -31,38 +40,67 @@
 )
 
 (defsrc
+  ;; to avoid problems with AltGr (Alt Graph) where lctl and ralt are both pressed but only ralt is released, do not define these keys in the first place
   grv    1    2    3    4    5             6    7    8    9    0      -    ;; CH ' = Key Code 219 = Minus = -
   tab    q    w    e    r    t             y    u    i    o    p      [    ;; CH ü = Key Code 186 = BracketLeft = [
-  caps   a    s    d    f    g             h    j    k    l    ;      '    ;; CH ä = Key Code 220 = Quote = '
+  rctl   a    s    d    f    g             h    j    k    l    ;      '
   lsft   <    z    x    c    v    b        n    m    ,    .    /      rsft ;; CH - = Key Code 189 = Slash = /
-         lmet   lalt    Space
+  caps      ‹❖   lalt   Space
 )
 
 (deflayer BASE
   _      _    _    _    _    _             _    _    _    _    _      _
   _      _    _    _    _    _             _    _    _    _    _      _
-  @clC   _    _    _    @fNV _             _   @jCH @kCH  _    _     @äRC
-  _      _    _    _    _    _    _        _    _   @,CH @.CH @-CH    _
-         _      _       _
+  _      _    _    _   @fNV  _             _   @jCH @kCH  _    _     @äRC
+  @osS   _    _    _    _    _    _        _    _   @,CH @.CH @-CH    _
+  @cwC       _     _     @␣S1
 )
 
 (deflayer NAV
   f12    f1   f2   f3   f4   f5            f6   f7   f8   f9  f10    f11
   lrld   _   @mau  _    _    _            esc  home  ▲   end  pgup   del
   _     @mal @mad @mar  _    _            ret  left  ▼   rght pgdn    _
-  _     menu  _    _    _    _   prnt     ins  mlft mmid mrgt bspc    _
-         _      _       _
+  _     menu @❖←  @❖→  _    _   prnt     ins  mlft mmid mrgt bspc    _
+  _          _     _     _
+)
+
+(deflayer SYM-1
+  🔣§  🔣!  🔣@  🔣#  🔣$  🔣`          🔣^  🔣|  🔣[ 🔣]  🔣~   🔣\
+  lrld   _   @mau  _    _    _            esc  home  ▲   end  pgup   del
+  _     @mal @mad @mar  _    _            ret  left  ▼   rght pgdn    _
+  _     menu @❖←  @❖→  _    _   @bS2     ins  mlft mmid mrgt bspc    _
+  _          _     _     _
+)
+
+(deflayer SYM-2
+  🔣°  🔣¹  🔣²  🔣³  RA-- S-=           =    🔣\  🔣{ 🔣}  RA-=  🔣|   ;; Right Alt + (CH ') = (dead ´)
+  lrld   _   @mau  _    _    _            esc  home  ▲   end  pgup   del   ;; CH (dead ^) = Key Code 221 = Equal = =
+  _     @mal @mad @mar  _    _            ret  left  ▼   rght pgdn    _    ;; Shift + (CH dead ^) = (dead `)
+  _     menu @❖←  @❖→  _    _    _       ins  mlft mmid mrgt bspc    _    ;; Right Alt + (CH dead ^) = (dead ~)
+  _          _     _     _
 )
 
 (defalias
-  clC (tap-hold $tt $ht caps lctl)
+  ;; BASE
+  osS (one-shot 2000 lsft)
+  cwC (tap-hold $tt $ht (caps-word 2000) rctl)
   fNV (tap-hold $tt $ht f (layer-toggle NAV))
-  äRC (tap-hold $tt $ht ' rctl)
+  äRC (tap-hold $tt $htl ' rctl)
+  ␣S1 (tap-hold $tt $ht Space (layer-toggle SYM-1))
+
+  ;; NAV
   mau (movemouse-accel-up $mi $ma $mn $mx)
   mad (movemouse-accel-down $mi $ma $mn $mx)
   mal (movemouse-accel-left $mi $ma $mn $mx)
   mar (movemouse-accel-right $mi $ma $mn $mx)
-  jCH (chord c1 j)
+  ❖← M-left
+  ❖→ M-rght
+
+  ;; SYM-1
+  bS2 (tap-hold $tt $ht _ (layer-toggle SYM-2))
+
+  ;; chording
+  jCH (tap-hold $tt $ht (chord c1 j) (layer-toggle NAV))
   kCH (chord c1 k)
   ,CH (chord c1 ,)
   .CH (chord c1 .)
