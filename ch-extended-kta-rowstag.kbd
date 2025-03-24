@@ -3,10 +3,16 @@
   * Left Shift
 
   Tap / Hold:
-  * Caps Word / Right Ctrl
+  * Caps Word / Left Ctrl
   * ä / Right Ctrl
+  * a / Left GUI
+  * s / Left Alt
+  * d / Left Ctrl
   * f / NAV layer
   * j / NAV layer
+  * k / Right Ctrl
+  * l / Left Alt (!)
+  * ö / Right GUI
   * Space / SYM-1 layer
   * On SYM-1 layer: b / SYM-2 layer
 
@@ -51,41 +57,53 @@
 (deflayer BASE
   _      _    _    _    _    _             _    _    _    _    _      _
   _      _    _    _    _    _             _    _    _    _    _      _
-  _      _    _    _   @fNV  _             _   @jCH @kCH  _    _     @äRC
-  @osS   _    _    _    _    _    _        _    _   @,CH @.CH @-CH    _
+  _     @aLG @sLA @dLC @fNV  _             _   @jCH @kCH @lLA @öRG   @äRC
+  @osS   _    _    _    _    _    _        _    _   @,CH @.CH @-CH   bspc
   @cwC       _     _     @␣S1
 )
 
 (deflayer NAV
   f12    f1   f2   f3   f4   f5            f6   f7   f8   f9  f10    f11
-  lrld   _   @mau  _    _    _            esc  home  ▲   end  pgup   del
-  _     @mal @mad @mar  _    _            ret  left  ▼   rght pgdn    _
+  lrld   _    _    _    _    _            esc  home  ▲   end  pgup   del
+  _      _    _    _    _    _            ret  left  ▼   rght pgdn    _
   _     menu @❖←  @❖→  _    _   prnt     ins  mlft mmid mrgt bspc    _
   _          _     _     _
 )
 
 (deflayer SYM-1
-  🔣§  🔣!  🔣@  🔣#  🔣$  🔣`          🔣^  🔣|  🔣[ 🔣]  🔣~   🔣\
-  lrld   _   @mau  _    _    _            esc  home  ▲   end  pgup   del
-  _     @mal @mad @mar  _    _            ret  left  ▼   rght pgdn    _
-  _     menu @❖←  @❖→  _    _   @bS2     ins  mlft mmid mrgt bspc    _
+  🔣§  🔣!  🔣@   🔣#  🔣$  🔣`          🔣^  🔣|  🔣[ 🔣]  🔣~   🔣\
+  lrld 🔣χ  @mau  🔣€  🔣🔲  XX           🔣ß  🔣↑  ]   🔣⬜  🔣§   🔣}   ;; CH (dead ¨) = Key Code 192 = BracketRight = ]
+  _     @mal @mad @mar   XX   XX           🔣←  🔣→  XX   XX   XX    🔣{
+  _    🔣\  🔣✅ 🔣❌ 🔣🔄 🔣☑ @bS2    🔣↓  🔣μ  🔣< 🔣>  🔣\    _
   _          _     _     _
 )
 
 (deflayer SYM-2
-  🔣°  🔣¹  🔣²  🔣³  RA-- S-=           =    🔣\  🔣{ 🔣}  RA-=  🔣|   ;; Right Alt + (CH ') = (dead ´)
-  lrld   _   @mau  _    _    _            esc  home  ▲   end  pgup   del   ;; CH (dead ^) = Key Code 221 = Equal = =
-  _     @mal @mad @mar  _    _            ret  left  ▼   rght pgdn    _    ;; Shift + (CH dead ^) = (dead `)
-  _     menu @❖←  @❖→  _    _    _       ins  mlft mmid mrgt bspc    _    ;; Right Alt + (CH dead ^) = (dead ~)
+  🔣°  🔣¹  🔣²  🔣³  RA-- S-=           =    🔣\  🔣{ 🔣}  RA-=   🔣|   ;; Right Alt + (CH ') = (dead ´)
+  lrld   XX  @mau  XX  🔣☐  XX            🔣ẞ   XX   ▲   🔣◌  🔣°   XX    ;; CH (dead ^) = Key Code 221 = Equal = =
+  _     @mal @mad @mar  XX   XX            ret  left  ▼   rght  XX    XX    ;; Shift + (CH dead ^) = (dead `)
+  _    🔣|  🔣✔ 🔣✕ 🔣⏳  🔣✓  XX       ins  mlft mmid mrgt bspc    _    ;; Right Alt + (CH dead ^) = (dead ~)
   _          _     _     _
 )
 
 (defalias
   ;; BASE
   osS (one-shot 2000 lsft)
-  cwC (tap-hold $tt $ht (caps-word 2000) rctl)
+  cwC (tap-hold $tt $ht (caps-word 2000) lctl)
+  ;; home-row
+  aLG (tap-hold $tt $htl a lmet)
+  sLA (tap-hold $tt $htl s lalt)
+  dLC (tap-hold $tt $ht d lctl)
   fNV (tap-hold $tt $ht f (layer-toggle NAV))
+  jCH (tap-hold $tt $ht (chord c1 j) (layer-toggle NAV))
+  kCH (tap-hold $tt $ht (chord c1 k) rctl)
+  lLA (tap-hold $tt $htl l lalt)
+  öRG (tap-hold $tt $htl ; rmet)
+  ;; /home-row
   äRC (tap-hold $tt $htl ' rctl)
+  ,CH (chord c1 ,)
+  .CH (chord c1 .)
+  -CH (chord c1 -)
   ␣S1 (tap-hold $tt $ht Space (layer-toggle SYM-1))
 
   ;; NAV
@@ -98,13 +116,6 @@
 
   ;; SYM-1
   bS2 (tap-hold $tt $ht _ (layer-toggle SYM-2))
-
-  ;; chording
-  jCH (tap-hold $tt $ht (chord c1 j) (layer-toggle NAV))
-  kCH (chord c1 k)
-  ,CH (chord c1 ,)
-  .CH (chord c1 .)
-  -CH (chord c1 -)
 )
 
 (defchords c1 75
