@@ -1,3 +1,31 @@
+#| Notes
+
+Some lmet/rmet combinations don't work, e.g. lmet/rmet + l (to lock Windows), while others do (e.g. lmet/rmet + k)
+
+Strange (hardware-related?) behavior when using mods in combination with F-keys (mapped to number row in FUN layer):
+
+Having tap-hold keys for a, s, d, f and j, k, l, ; with hold action being lmet, lalt, lctl, FUN and FUN, rctl, lalt, rmet.
+
+| F… | sf | sj | lj | lf | af | ;f |
+|----|----|----|----|----|----|----|
+|  1 |  ✓ |  ✓ |  ✓ |  ✓ |  - |  ✓ |
+|  2 |  - |  - |  ✓ |  ✓ |  ✓ |  ✓ |
+|  3 |  ✓ |  ✓ |  ✓ |  ✓ |  ✓ |  ✓ |
+|  4 |  - |  ✓ |  ✓ |  - |  - |  ✓ |
+|  5 |  - |  ✓ |  ✓ |  - |  - |  ✓ |
+|  6 |  ✓ |  ✓ |  ✓ |  ✓ |  ✓ |  ✓ |
+|  7 |  ✓ |  - |  - |  ✓ |  ✓ |  - |
+|  8 |  ✓ |  ✓ |  ✓ |  ✓ |  ✓ |  ✓ |
+|  9 |  ✓ |  ✓ |  - |  - |  ✓ |  ✓ |
+| 10 |  ✓ |  ✓ |  ✓ |  ✓ |  ✓ |  - |
+
+So for the keys that are being held down, the F-keys that are "straight" above them don't work.
+Interestingly, with the built-in laptop keyboard, sf5 works (but sf2 and sf4 still don't).
+
+(tested with toptal.com/developers/keycode)
+
+|#
+
 #|
   One-shot
   * Left Shift
@@ -65,15 +93,15 @@
 (deflayer NAV
   f12    f1   f2   f3   f4   f5            f6   f7   f8   f9  f10    f11
   lrld   _    _    _    _    _            esc  home  ▲   end  pgup   del
-  _      _    _    _    _    _            ret  left  ▼   rght pgdn    _
-  _     menu @❖←  @❖→  _    _   prnt     ins  mlft mmid mrgt bspc    _
+  _      _    _    _    XX   _            ret  left  ▼   rght pgdn    _
+  _      ☰  @❖←  @❖→  _    _   prnt     ins  mlft mmid mrgt bspc    _
   _          _     _     _
 )
 
 (deflayer SYM-1
   🔣§  🔣!  🔣@   🔣#  🔣$  🔣`          🔣^  🔣|  🔣[ 🔣]  🔣~   🔣\
   lrld 🔣χ  @mau  🔣€  🔣🔲  XX           🔣ß  🔣↑  ]   🔣⬜  🔣§   🔣}   ;; CH (dead ¨) = Key Code 192 = BracketRight = ]
-  _     @mal @mad @mar   XX   XX           🔣←  🔣→  XX   XX   XX    🔣{
+  _     @mal @mad @mar   XX   XX           🔣←  🔣→ @CAk  XX   XX    🔣{
   _    🔣\  🔣✅ 🔣❌ 🔣🔄 🔣☑ @bS2    🔣↓  🔣μ  🔣< 🔣>  🔣\    _
   _          _     _     _
 )
@@ -96,11 +124,11 @@
   dLC (tap-hold $tt $ht d lctl)
   fNV (tap-hold $tt $ht f (layer-toggle NAV))
   jCH (tap-hold $tt $ht (chord c1 j) (layer-toggle NAV))
-  kCH (tap-hold $tt $ht (chord c1 k) rctl)
+  kCH (tap-hold $tt $htl (chord c1 k) rctl)
   lLA (tap-hold $tt $htl l lalt)
   öRG (tap-hold $tt $htl ; rmet)
   ;; /home-row
-  äRC (tap-hold $tt $htl ' rctl)
+  äRC (tap-hold-release $tt $htl ' rctl)
   ,CH (chord c1 ,)
   .CH (chord c1 .)
   -CH (chord c1 -)
@@ -115,6 +143,7 @@
   ❖→ M-rght
 
   ;; SYM-1
+  CAk C-A-k
   bS2 (tap-hold $tt $ht _ (layer-toggle SYM-2))
 )
 
