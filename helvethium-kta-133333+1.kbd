@@ -1,0 +1,13 @@
+(defsrc
+       q  w  e  r  t     y  u  i  o  p
+  caps a  s  d  f  g     h  j  k  l  ;  '
+       <  z  x  c  v     n  m  ,  .  /
+               lalt        ␣
+)
+
+(deflayer Helvethium
+      ' - = . /   j m g p f
+    b c a e i ,   v h t n s k
+      y o q u ;   x l d w z
+             ␣     r
+)
